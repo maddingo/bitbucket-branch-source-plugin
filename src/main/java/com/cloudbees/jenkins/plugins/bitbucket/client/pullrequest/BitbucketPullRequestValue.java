@@ -28,10 +28,27 @@ import com.cloudbees.jenkins.plugins.bitbucket.api.BitbucketReviewer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.BeanDescription;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.deser.BeanDeserializer;
+import com.fasterxml.jackson.databind.deser.BeanDeserializerBase;
+import com.fasterxml.jackson.databind.deser.BeanDeserializerBuilder;
+import com.fasterxml.jackson.databind.deser.SettableBeanProperty;
+import com.fasterxml.jackson.databind.deser.impl.BeanPropertyMap;
+import com.fasterxml.jackson.databind.deser.impl.ObjectIdReader;
+import com.fasterxml.jackson.databind.deser.std.JsonNodeDeserializer;
+import com.fasterxml.jackson.databind.util.NameTransformer;
+
+import javax.annotation.Nullable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class BitbucketPullRequestValue implements BitbucketPullRequest {
+
     private BitbucketPullRequestValueDestination destination;
+
     private BitbucketPullRequestValueRepository source;
     private String id;
     private String title;
@@ -189,5 +206,4 @@ public class BitbucketPullRequestValue implements BitbucketPullRequest {
             this.displayName = displayName;
         }
     }
-
 }

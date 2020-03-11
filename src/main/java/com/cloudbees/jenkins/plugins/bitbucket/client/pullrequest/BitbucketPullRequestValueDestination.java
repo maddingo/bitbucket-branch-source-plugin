@@ -34,6 +34,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.util.StdDateFormat;
 import edu.umd.cs.findbugs.annotations.NonNull;
+import edu.umd.cs.findbugs.annotations.Nullable;
+
 import java.util.Date;
 
 public class BitbucketPullRequestValueDestination implements BitbucketPullRequestDestination {
@@ -43,7 +45,7 @@ public class BitbucketPullRequestValueDestination implements BitbucketPullReques
 
     @JsonCreator
     public BitbucketPullRequestValueDestination(@NonNull @JsonProperty("repository") BitbucketCloudRepository repository,
-                                                @JsonProperty("branch") BitbucketCloudBranch branch,
+                                                @Nullable @JsonProperty("branch") BitbucketCloudBranch branch,
                                                 @NonNull @JsonProperty("commit") BitbucketCloudCommit commit) {
         this.repository = repository;
         this.branch = branch;
